@@ -1,25 +1,51 @@
-const expres = require('express')
-// const bodyP = require('body-parser')
-const mongoo = require('mongoose')
+/** require dependencies */
+const express = require("express")
+const routes = require('./routes/')
+const mongoose = require('mongoose')
 const cors = require('cors')
+const bodyParser = require('body-parser')
+const helmet = require('helmet')
+// const cloudinary = require('cloudinary')
 require('dotenv').config()
-const app = expres()
-const port = process.env.PORT || 5000
+
+const app = express()
+const router = express.Router()
+const url = process.env.ATLAS_URI
+
+/** configure cloudinary */
+// cloudinary.config({
+//     cloud_name: 'chidumennamdi',
+//     api_key: '',
+//     api_secret: ''
+// })
+
+/** connect to MongoDB datastore */
+try {
+    mongoose.connect(url, {
+        useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true
+        //useMongoClient: true
+    })
+    const conn = mongoose.connection
+    conn.once('open', () => {
+        console.log('MongoDB connection OK')
+    })
+} catch (error) {
+    console.log(error)
+}
+
+const port = 5000 || process.env.PORT
+
+/** set up routes {API Endpoints} */
+routes(router)
+
+/** set up middlewares */
 app.use(cors())
-// app.use(bodyP.json())
-app.use(expres.json())
+app.use(bodyParser.json())
+app.use(helmet())
 
-const uri = process.env.ATLAS_URI
-mongoo.connect(uri, { useNewUrlParser: true, useCreateIndex: true })
-const conn = mongoo.connection
-conn.once('open', () => {
-    console.log('MongoDB connection OK')
-})
+app.use('/api', router)
 
-const exersRouter = require('./routes/exercises')
-const usersRouter = require('./routes/users')
-app.use('/exercises', exersRouter)
-app.use('/users', usersRouter)
+/** start server */
 app.listen(port, () => {
-    console.log(`Port: ${port} de, server ga ugoiteiru`)
-})
+    console.log(`Server started at port: ${port}`);
+});
