@@ -122,7 +122,7 @@ REM }
 
 1/POST NEW ARTICLE
 =============
-curl --request POST --url http://localhost:5000/api/article --header 'content-type: application/json' --data '{"text": "<p>sách</p>", "title": "Python", "claps":0, "description": "<p>AI & Deep learning</p>...", "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDU5qlsl-XzMe8-jK02bC5fBerf_gYSgiPhQ&usqp=CAU", "user_id": "5f323e017117a1534c05a68c"}'
+curl --request POST --url http://localhost:5000/api/article --header 'content-type: application/json' --data '{"text": "xxx", "title": "Bi hiem", "claps":1, "description": "Rat huyen bi...", "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRd-y-IJN8glQlf1qoU01dEgGPUa0d1-sjfWg&usqp=CAU", "user_id": "5f32b5f0f2785e558c2d7894"}'
 
 2/GET ALL ARTICLES
 ================

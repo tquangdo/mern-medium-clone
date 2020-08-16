@@ -1,25 +1,51 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import ExerList from './components/ExerList'
-import Navbar from './components/Navbar'
-import EditExer from './components/EditExer'
-import CreateExer from './components/CreateExer'
-import CreateUser from './components/CreateUser'
+import React, { Component } from 'react'
+// import Header from './components/helper/Header'
+import { Switch, Route } from 'react-router-dom'
+// import requireAuthentication from './utils/requireAuth'
+import Feed from './components/Feed'
+// import Editor from './components/Editor'
+// import Profile from './components/Profile'
+import ArticleView from './components/ArticleView'
+// import SignInWith from './components/SignInWith'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'connected-react-router'
+import * as actType from './redux/actions/ActionTypes'
+import { getUser } from './redux/actions/UserAction'
+import cauhinhStore, { history } from './redux/store'
+import './assets/medium.css'
 
-function App() {
-  return (
-    <Router>
-      <div className='container'>
-        <Navbar />
-        <br />
-        <Route path='/' exact component={ExerList} />
-        <Route path='/edit/:id' component={EditExer} />
-        <Route path='/create' component={CreateExer} />
-        <Route path='/user' component={CreateUser} />
-      </div>
-    </Router>
-  )
+const store = cauhinhStore()
+if (localStorage.Auth) {
+  // update localstorage
+  store.dispatch({
+    type: actType.SET_USER, user: JSON.parse(localStorage.Auth)
+  })
+
+  var _id = JSON.parse(localStorage.Auth)._id
+  getUser(_id).then((res) => {
+    store.dispatch({ type: actType.SET_USER, user: res })
+  })
+}
+
+class App extends Component {
+  render() {
+    // const pathname = window.location.pathname
+    return (
+      <Provider store={store}>
+        <ConnectedRouter history={history}>
+          {/* {!pathname.includes('editor') ? <Header /> : ''} */}
+          {/* <SignInWith /> */}
+          <Switch>
+            <Route exact path="/" component={Feed} />
+            <Route path="/articleview/:id" component={ArticleView} />
+            {/* <Route path="/editor" component={requireAuthentication(Editor)} /> */}
+            {/* <Route path="/profile/:id" component={Profile} /> */}
+            <Route path="**" component={Feed} />
+          </Switch>
+        </ConnectedRouter>
+      </Provider>
+    )
+  }
 }
 
 export default App
