@@ -21,7 +21,7 @@ curl --request GET \
 ===================
 curl --request GET \
   --url http://localhost:5000/api/users/profile/5f323e017117a1534c05a68c
-==========TranDo có 2 articles=========
+==========TH TranDo có 2 articles=========
 REM {
 REM   "user": {
 REM     "followers": [
@@ -57,67 +57,9 @@ REM       "__v": 0,
 REM       "users": "5f323e017117a1534c05a68c"
 REM     },
 REM     {
-REM       "_id": "5f32597a73398c2160c45575",
-REM       "text": "<p>phim</p>",
-REM       "title": "Titanic",
-REM       "claps": 4,
-REM       "description": "r?t hay",
-REM       "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVoTC0p-la3qtjESUbigorBHGhlwgXP7hhFw&usqp=CAU",
-REM       "comments": [
-REM         {
-REM           "_id": "5f329c39fe92cd34687ad4bd",
-REM           "users": "5f323e017117a1534c05a68c",
-REM           "text": "cong nh?n hay!"
-REM         },
-REM         {
-REM           "_id": "5f32a8fd23a1892758c7280f",
-REM           "users": "5f329cc8fe92cd34687ad4be",
-REM           "text": "sao t? vi?t sach r?i t? khen v?y cha?!?"
-REM         }
-REM       ],
-REM       "__v": 3,
-REM       "users": "5f323e017117a1534c05a68c"
+REM       <article2>
 REM     }
 REM   ]
-REM }
-==========NguyenA có 0 article + 1 comment=========
-REM {
-REM   "user": {
-REM     "followers": [
-REM       {
-REM         "followers": [],
-REM         "followings": [
-REM           "5f329cc8fe92cd34687ad4be"
-REM         ],
-REM         "_id": "5f323e017117a1534c05a68c",
-REM         "name": "TranDo",
-REM         "email": "dotq@email.com",
-REM         "__v": 1
-REM       }
-REM     ],
-REM     "followings": [
-REM       "5f323e017117a1534c05a68c"
-REM     ],
-REM     "_id": "5f329cc8fe92cd34687ad4be",
-REM     "name": "NguyenA",
-REM     "email": "anguyen@email.com",
-REM     "__v": 1
-REM   },
-REM   "articles": []
-REM }
-==========LeB có 0 article + 0 comment=========
-REM {
-REM   "user": {
-REM     "followers": [],
-REM     "followings": [
-REM       "5f323e017117a1534c05a68c"
-REM     ],
-REM     "_id": "5f32b5f0f2785e558c2d7894",
-REM     "name": "LeB",
-REM     "email": "ble@email.com",
-REM     "__v": 1
-REM   },
-REM   "articles": []
 REM }
 
 1/POST NEW ARTICLE

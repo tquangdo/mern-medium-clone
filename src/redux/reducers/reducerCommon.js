@@ -1,7 +1,6 @@
 import * as actType from '../actions/ActionTypes'
 
 const defaultState = {
-  appName: '',
   modalMode: false
 }
 

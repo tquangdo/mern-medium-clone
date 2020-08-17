@@ -14,23 +14,24 @@ class AsideFeed extends Component {
             .map((item_article, chiso) =>
                 <a key={chiso} href='/' className="tag">{item_article}</a>
             )
-        const top_articles = articles.map((article, chiso) =>
-            <li key={chiso} className="top-stories-list-item">
-                <div className="count-button-wrapper">
-                    <span className="count-button">{chiso + 1}</span>
-                </div>
-                <div className="top-stories-links">
-                    <a className="post-title" href={`/articleview/${article._id}`}>{article.title}</a><br />
-                    <small>
-                        <div data-react-classname="PopoverLink" data-react-props="">
-                            <span className="popover-link" data-reactroot="">
-                                <a href={`/profile/${article.users._id}`}>{article.users.name}</a>
-                            </span>
-                        </div>
-                    </small>
-                </div>
-            </li>
-        )
+        const top_articles = articles
+            .map((article, chiso) =>
+                <li key={chiso} className="top-stories-list-item">
+                    <div className="count-button-wrapper">
+                        <span className="count-button">{chiso + 1}</span>
+                    </div>
+                    <div className="top-stories-links">
+                        <a className="post-title" href={`/articleview/${article._id}`}>{article.title}</a><br />
+                        <small>
+                            <div data-react-classname="PopoverLink" data-react-props="">
+                                <span className="popover-link" data-reactroot="">
+                                    <a href={`/profile/${article.users._id}`}>{article.users.name}</a>
+                                </span>
+                            </div>
+                        </small>
+                    </div>
+                </li>
+            )
         return (
             <div>
                 <aside className="col-md-4 main-sidebar">

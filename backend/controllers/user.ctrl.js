@@ -28,10 +28,13 @@ module.exports = {
     getUserProfile: (req, res) => {
         User.findById(req.params.id).then
             (userProfile => {
+                // tìm trong array user>followers>followings[] có id=req.params.id
+                // "TranDo" có followings["NguyenA"] => getUserProfile("NguyenA") sẽ push followers["TranDo"]
+                // "NguyenA&LeB" có followings["TranDo"] => getUserProfile("TranDo") sẽ push followers["NguyenA&LeB"]
+                // KO có user nào có followings["LeB"] => getUserProfile("LeB") sẽ KO push followers
                 return User.find({ 'followings': req.params.id }).then(followerUsers => {
                     followerUsers.forEach(followerUser => {
                         userProfile.addFollower(followerUser)
-                        // nguyên cả hàm chỉ có return mà KO save() nên users>followers[] sẽ luôn blank!
                     })
                     return Article.find({ 'users': req.params.id }).then(articles => {
                         return res.json({ user: userProfile, articles: articles })

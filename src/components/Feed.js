@@ -27,9 +27,11 @@ class Feed extends Component {
                 </div> : ''}
 
                 <div className="main-body">
-                    <h3 className="post-title"><a href={`/articleview/${article._id}`} >{article.text}</a></h3>
+                    <h2 className="post-title"><b>{article.text}</b></h2>
                     <div className="post-body">
-                        <p dangerouslySetInnerHTML={{ __html: article.title }}></p>
+                        <a href={`/articleview/${article._id}`} >
+                            <p dangerouslySetInnerHTML={{ __html: article.title }}></p>
+                        </a>
                     </div>
                     <a className="read-more" href={`/articleview/${article._id}`}>Read more</a>
                 </div>
@@ -38,7 +40,14 @@ class Feed extends Component {
                     <div className="pull-left">
                         <div className="like-button-wrapper">
                             <i className="fa fa-heart-o"></i>
-                            <span className="like-count">{' '}{article.claps}</span>
+                            <span className="like-count">{article.claps}</span>
+                        </div>
+                    </div>
+                    <div className="pull-left">{'  '}</div>
+                    <div className="pull-left">
+                        <div className="response-icon-wrapper">
+                            <i className="fa fa-comment-o"></i>
+                            <span className="response-count" data-behavior="response-count">{article.comments.length}</span>
                         </div>
                     </div>
                     <div className="pull-right">

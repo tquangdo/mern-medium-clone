@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 // import requireAuthentication from './utils/requireAuth'
 import Feed from './components/Feed'
 // import Editor from './components/Editor'
-// import Profile from './components/Profile'
+import Profile from './components/Profile'
 import ArticleView from './components/ArticleView'
 // import SignInWith from './components/SignInWith'
 import { Provider } from 'react-redux'
@@ -39,7 +39,7 @@ class App extends Component {
             <Route exact path="/" component={Feed} />
             <Route path="/articleview/:id" component={ArticleView} />
             {/* <Route path="/editor" component={requireAuthentication(Editor)} /> */}
-            {/* <Route path="/profile/:id" component={Profile} /> */}
+            <Route path="/profile/:id" component={Profile} />
             <Route path="**" component={Feed} />
           </Switch>
         </ConnectedRouter>
