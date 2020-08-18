@@ -8,6 +8,7 @@ export const loadArticles = () => dispatch => {
         })
         .catch((err) => console.log(err))
 }
+
 export const getArticle = article_id => dispatch => {
     callAPI(`articles/${article_id}`)
         .then(res => {
@@ -22,13 +23,24 @@ export const getArticle = article_id => dispatch => {
 
 //     }
 // }
+
 //req.body.article_id
-export function clap(article_id) {
-    return (dispatch) => {
-        callAPI('article/clap', 'POST', { article_id }).then((res) => {
+export const clap = article_id => dispatch => {
+    callAPI('article/clap', 'POST', { article_id })
+        .then((res) => {
             dispatch({
                 type: actType.CLAP_ARTICLE
             })
         }).catch((err) => console.log(err))
-    }
+}
+
+export const publishStory = post_article => dispatch => {
+    dispatch({ type: actType.LOADING_POST_ARTICLE })
+    callAPI('article', 'POST', post_article)
+        .then((res) => {
+            dispatch({
+                type: actType.POST_ARTICLE,
+                payload: res.data,
+            })
+        }).catch((err) => console.log(err))
 }

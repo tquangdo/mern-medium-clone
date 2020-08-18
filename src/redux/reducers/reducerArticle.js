@@ -2,10 +2,16 @@ import * as actType from '../actions/ActionTypes'
 
 const initialState = {
     articles: [],
-    article: {}
+    article: {},
+    loading: false,
 }
 const reducerArticle = (state = initialState, action) => {
     switch (action.type) {
+        case actType.LOADING_POST_ARTICLE:
+            return {
+                ...state,
+                loading: true,
+            }
         case actType.LOAD_ARTICLES:
             return {
                 ...state,
@@ -22,6 +28,19 @@ const reducerArticle = (state = initialState, action) => {
             return {
                 ...state,
                 article: article
+            }
+        case actType.POST_ARTICLE:
+            alert('Đã tạo article thành công!')
+            if (window.location.pathname !== '/') {
+                window.location = '/'
+            }
+            return {
+                ...state,
+                loading: false,
+                articles: [
+                    action.payload,
+                    ...state.articles,
+                ]
             }
         default:
             return state

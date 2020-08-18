@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 export default function (ComponentArg) {
     class Authenticate extends Component {
         UNSAFE_componentWillMount() {
-            if (!this.props.isAuth) {
-                this.context.router.history.push('/')
+            if (!this.props.propsIsAuth) {
+                alert('Chưa login nên sẽ redirect về Home!!!')
+                window.location = '/'
             }
         }
         render() {
@@ -16,7 +17,7 @@ export default function (ComponentArg) {
     }
     const mapStateToProps = state => {
         return {
-            isAuth: state.reducerUser.isAuth
+            propsIsAuth: state.reducerUser.isAuth
         }
     }
     return connect(mapStateToProps)(Authenticate)

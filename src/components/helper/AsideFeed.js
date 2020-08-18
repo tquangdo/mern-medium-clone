@@ -11,8 +11,8 @@ class AsideFeed extends Component {
             .filter((a, b, self) => {
                 return self.indexOf(a) === b
             })
-            .map((item_article, chiso) =>
-                <a key={chiso} href='/' className="tag">{item_article}</a>
+            .map((item_user, chiso) =>
+                <ul key={chiso}>{item_user}</ul>
             )
         const top_articles = articles
             .map((article, chiso) =>

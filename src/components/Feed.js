@@ -6,7 +6,7 @@ import {
 import AsideFeed from './helper/AsideFeed'
 
 class Feed extends Component {
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         this.props.loadArticles()
     }
     render() {

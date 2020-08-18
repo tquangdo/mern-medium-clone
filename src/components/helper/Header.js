@@ -5,10 +5,10 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <div data-react-classname="UserOverlay" data-react-props="{}">
-                    <div className="overlay overlay-hugeinc " data-reactroot=""><button className="overlay-close"><span className="glyphicon glyphicon-remove"></span></button>
+                <div data-react-classname="UserOverlay">
+                    <div className="overlay overlay-hugeinc " data-reactroot=""><button className="overlay-close">
+                    </button>
                         <nav className="users-overlay">
-                            <h2 className="grayed-heading center"></h2>
                             <ul>
                                 <li className="pagination-button-group"></li>
                             </ul>
@@ -25,14 +25,20 @@ class Header extends Component {
                                 <img alt="Stories" src="/assets/img/stories-logo.svg" height="40" />
                             </a>
                         </div>
-                        <ul className="nav navbar-nav filter-links">
+                        <ul className="nav navbar-header">
                             <li><a className="" href="/">Top stories</a></li>
                         </ul>
 
                         <div className="folding-nav">
                             <ul className="nav navbar-nav navbar-right">
-                                {this.props.isAuth ? <li className="new-post-button"><a className="button" data-behavior="trigger-overlay" href="/editor">Write a story</a></li> : ''}
-                                {this.props.isAuth ? '' : <li onClick={this.props.openSignInWith} className="sign-in-button"><a className="button green-border-button" data-behavior="trigger-overlay" href="#">Sign in / Sign up</a></li>}
+                                {this.props.propsIsAuth ?
+                                    <li className="new-post-button">
+                                        <a className="button" data-behavior="trigger-overlay" href="/editor">Write a story</a>
+                                    </li> :
+                                    <button onClick={this.props.openSignInWith} className="button green-border-button">
+                                        Sign in / Sign up
+                                    </button>
+                                }
                             </ul>
                         </div>
 
@@ -44,8 +50,7 @@ class Header extends Component {
 }
 const mapStateToProps = state => {
     return {
-        user: state.authUser.user,
-        isAuth: state.authUser.isAuth
+        propsIsAuth: state.reducerUser.isAuth
     }
 }
 const mapDispatchToProps = dispatch => {

@@ -9,15 +9,13 @@ import FollowButton from './FollowButton'
 
 class ArticleView extends Component {
     componentDidMount() {
+        const { getArticle, match, loadArticles } = this.props
+        loadArticles()
+        getArticle(match.params.id)
         document.body.className = 'posts show'
     }
     componentWillUnmount() {
         document.body.className = ''
-    }
-    UNSAFE_componentWillMount() {
-        const { getArticle, match, loadArticles } = this.props
-        loadArticles()
-        getArticle(match.params.id)
     }
 
     render() {
