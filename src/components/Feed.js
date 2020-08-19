@@ -50,19 +50,6 @@ class Feed extends Component {
                             <span className="response-count" data-behavior="response-count">{article.comments.length}</span>
                         </div>
                     </div>
-                    <div className="pull-right">
-                        <div className="bookmark-button-wrapper">
-                            <form className="button_to" method="get" action="">
-                                <button data-behavior="trigger-overlay" type="submit">
-                                    <span className="icon-bookmark-o"></span>
-                                    <span>Bookmark</span>
-                                </button>
-                            </form>
-                        </div>
-
-                    </div>
-                    <div className="response-count pull-right">
-                    </div>
                 </div>
             </div>
         )

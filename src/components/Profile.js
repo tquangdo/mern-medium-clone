@@ -59,7 +59,11 @@ function ItemList({ items }) {
                                         </span>
                                         <span className="follower-count">
                                             <span>
-                                                <span><b>{user.followers.length}</b> Followers
+                                                <span><b>{user.followers.length}</b> Followers ({
+                                                    propsProfile.followerNames.map(fName => {
+                                                        return fName + ' '
+                                                    })
+                                                })
                                                 </span>
                                             </span>
                                         </span>
@@ -111,18 +115,6 @@ function ItemList({ items }) {
                                         <span className="response-count" data-behavior="response-count">{comments.length}</span>
                                     </div>
                                 </div>
-
-                                <div className="pull-right">
-                                    <div className="bookmark-button-wrapper">
-                                        <form className="button_to" method="get" action=""><button className="bookmark-button" data-behavior="trigger-overlay" type="submit">
-                                            <span className="icon-bookmark-o"></span>
-                                            <span className="hide-text">Bookmark</span>
-                                        </button>
-                                        </form>
-                                    </div>
-
-                                </div>
-
                                 <div className="response-count pull-right">
                                     0 bookmark
                                 </div>

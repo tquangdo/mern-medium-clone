@@ -30,6 +30,9 @@ class Editor extends Component {
     const { name, value, type, checked } = event.target
     const value2 = (type === 'checkbox') ? checked : value
     this.setState({ [name]: value2 })
+    if (type === 'select-one') {
+      document.getElementById('image_preview').src = value2
+    }
   }
   // handleClickUpload=() => {
   //   this.refs.fileUploader.click()
@@ -69,12 +72,6 @@ class Editor extends Component {
               </div>
 
               <form className="editor-form main-editor" autoComplete="off" >
-                {/* <div className={imgSrc != null ? 'file-upload-previewer' : 'file-upload-previewer hidden'}>
-                  <img src="" alt="" id="image_preview" />
-                </div>
-                <div className="existing-img-previewer" id="existing-img-previewer">
-                </div> */}
-
                 <div className="form-group">
                   <label>Category: </label>
                   {' '}
@@ -105,6 +102,12 @@ class Editor extends Component {
                     <option value='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROrpa-OR0dG5As3B2u_9_loE-FulOlDDQKtF1g_tclfJILjW5I'>Pic2</option>
                     <option value='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRd-y-IJN8glQlf1qoU01dEgGPUa0d1-sjfWg&usqp=CAU'>Pic3</option>
                   </select>
+                </div>
+
+                <div className={imgSrc != null ? 'file-upload-previewer' : 'file-upload-previewer hidden'}>
+                  <img src="" alt="" id="image_preview" />
+                </div>
+                <div className="existing-img-previewer" id="existing-img-previewer">
                 </div>
 
                 {/* <div className="hidden">

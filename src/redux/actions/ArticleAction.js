@@ -17,14 +17,16 @@ export const getArticle = article_id => dispatch => {
         .catch((err) => console.log(err))
 }
 
-// article_id, user_id, comment
-// export function comment() {
-//     return (dispatch) => {
+export const cmtArticle = cmt_data => (dispatch) => {
+    callAPI('article/comment', 'POST', cmt_data) //cmt_data: comment, user_id, article_id
+        .then(() => {
+            dispatch(getArticle(cmt_data.article_id))
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
 
-//     }
-// }
-
-//req.body.article_id
 export const clap = article_id => dispatch => {
     callAPI('article/clap', 'POST', { article_id })
         .then((res) => {

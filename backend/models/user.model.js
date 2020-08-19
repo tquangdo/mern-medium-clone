@@ -29,14 +29,14 @@ userSchem.methods.addFollowing = function (user_id) {
 userSchem.methods.addFollower = function (follower) {
     if (this.followers.indexOf(follower._id) === -1) {
         this.followers.push(follower)
+        // nguyên cả hàm nếu KO save() thì users>followers[] sẽ luôn blank!
+        return this.save()
+            .then(res => {
+                console.log('addFollower() OK: ', res)
+            })
+            .catch(err => {
+            })
     }
-    // nguyên cả hàm nếu KO save() thì users>followers[] sẽ luôn blank!
-    return this.save()
-        .then(res => {
-            console.log('addFollower() OK: ', res)
-        })
-        .catch(err => {
-        })
 }
 
 module.exports = model('user', userSchem)

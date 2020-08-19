@@ -6,6 +6,8 @@ import {
     clap,
 } from '../redux/actions/ArticleAction'
 import FollowButton from './FollowButton'
+import CommentForm from './CommentForm'
+import Comment from './Comment'
 
 class ArticleView extends Component {
     componentDidMount() {
@@ -33,30 +35,6 @@ class ArticleView extends Component {
             user_id = _id
             user_pic = provider_pic
         }
-        let xhtmlCmts = null
-        let cmt_users, cmt_text, cmt_length
-        let user_name_1, user_pic_1
-        if (comments) {
-            cmt_length = comments.length
-            xhtmlCmts = comments.map((cmt_item, chiso) => {
-                const { users, text } = cmt_item
-                cmt_text = text
-                cmt_users = users
-                if (cmt_users) {
-                    const { name, provider_pic } = cmt_users
-                    user_name_1 = name
-                    user_pic_1 = provider_pic
-                }
-                return (
-                    <div key={chiso} className="users-info">
-                        <div clas="users-metadata">
-                            <img alt={user_name_1} className="avatar-image" src={user_pic_1} height="50" width="50" />{user_name_1}
-                        </div>
-                        {cmt_text}
-                    </div>
-                )
-            })
-        }
         const relateStories = propsArticles
             .filter(article => (article.users._id === user_id && article._id !== article_id))
             .map((article, chiso) =>
@@ -67,6 +45,10 @@ class ArticleView extends Component {
                     <a className="post-title" href={`/articleview/${article._id}`}>{article.title}</a>
                 </div>
             )
+        let cmt_length = 0
+        if (comments) {
+            cmt_length = comments.length
+        }
         return (
             <div>
                 <div className="container-fluid main-container">
@@ -117,11 +99,16 @@ class ArticleView extends Component {
                                 <div className="pull-left">
                                     <div className="response-icon-wrapper">
                                         <i className="fa fa-comment-o"></i>
-                                        <span className="response-count" data-behavior="response-count">{cmt_length}</span>
+                                        <span className="response-count" data-behavior="response-count">{
+                                            cmt_length
+                                        }</span>
                                     </div>
                                 </div>
+                                <div className="pull-right">
+                                    <CommentForm fromParPropsArticleID={article_id} />
+                                </div>
                             </div>
-                            {xhtmlCmts}
+                            <Comment comments={comments} />
                         </div>
                     </div>
 

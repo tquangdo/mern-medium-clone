@@ -32,12 +32,14 @@ module.exports = {
                 // "TranDo" có followings["NguyenA"] => getUserProfile("NguyenA") sẽ push followers["TranDo"]
                 // "NguyenA&LeB" có followings["TranDo"] => getUserProfile("TranDo") sẽ push followers["NguyenA&LeB"]
                 // KO có user nào có followings["LeB"] => getUserProfile("LeB") sẽ KO push followers
+                const followerNames = []
                 return User.find({ 'followings': req.params.id }).then(followerUsers => {
                     followerUsers.forEach(followerUser => {
+                        followerNames.push(followerUser.name)
                         userProfile.addFollower(followerUser)
                     })
                     return Article.find({ 'users': req.params.id }).then(articles => {
-                        return res.json({ user: userProfile, articles: articles })
+                        return res.json({ user: userProfile, articles: articles, followerNames: followerNames })
                     })
                 })
             }).catch(err => console.log(err))
