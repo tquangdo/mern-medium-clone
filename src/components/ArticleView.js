@@ -21,7 +21,7 @@ class ArticleView extends Component {
     }
 
     render() {
-        const { propsArticles, propsArticle, propsUser, clap } = this.props
+        const { propsArticles, propsArticle, propsUser, clap, propsIsAuth } = this.props
         const { _id: article_id, description, claps, title, feature_img, users, comments } = propsArticle
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // 1)Chú ý kỹ chỗ khác nhau khi tự sửa code có sẵn để optimize (code dưới đây)
@@ -56,7 +56,7 @@ class ArticleView extends Component {
                         <div id="main-post" className="col-xs-10 col-md-8 col-md-offset-2 col-xs-offset-1 main-content">
 
                             <div className="pull-right">
-                                {propsUser.length > 0 ? <FollowButton fromPar_following={`${propsUser.following}`} fromPar_users_id={`${user_id}`} /> : ''}
+                                {propsIsAuth ? <FollowButton fromPar_following={`${propsUser.following}`} fromPar_users_id={`${user_id}`} /> : ''}
                             </div>
 
                             <div className="post-metadata">
@@ -133,7 +133,8 @@ class ArticleView extends Component {
                                     </div>
                                 </div>
                                 <div data-react-classname="UserFollowButton" >
-                                    {propsUser.length > 0 ? <FollowButton fromPar_following={`${propsUser.following}`} fromPar_users_id={`${user_id}`} /> : ''}
+                                    {propsIsAuth ? <FollowButton fromPar_following={`${propsUser.following}`}
+                                        fromPar_users_id={`${user_id}`} /> : ''}
                                 </div>
                             </div>
                         </div>
@@ -148,6 +149,7 @@ const mapStateToProps = state => {
         propsArticles: state.reducerArticle.articles,
         propsArticle: state.reducerArticle.article,
         propsUser: state.reducerUser.user,
+        propsIsAuth: state.reducerUser.isAuth,
     }
 }
 

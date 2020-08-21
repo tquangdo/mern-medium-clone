@@ -1,8 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {
+    toggleOpen,
+} from '../../redux/actions/CommonAction'
 
 class Header extends Component {
     render() {
+        const { propsReducerUser } = this.props
+        const { isAuth, user } = propsReducerUser
         return (
             <div>
                 <div data-react-classname="UserOverlay">
@@ -31,11 +36,13 @@ class Header extends Component {
 
                         <div className="folding-nav">
                             <ul className="nav navbar-nav navbar-right">
-                                {this.props.propsIsAuth ?
-                                    <li className="new-post-button">
+                                {isAuth ?
+                                    <div>
+                                        <small> Welcome user: {user.name}</small>
+                                        {'   '}
                                         <a className="button" data-behavior="trigger-overlay" href="/editor">Write a story</a>
-                                    </li> :
-                                    <button onClick={this.props.openSignInWith} className="button green-border-button">
+                                    </div> :
+                                    <button onClick={this.props.toggleOpen} className="button green-border-button">
                                         Sign in / Sign up
                                     </button>
                                 }
@@ -50,12 +57,8 @@ class Header extends Component {
 }
 const mapStateToProps = state => {
     return {
-        propsIsAuth: state.reducerUser.isAuth
+        propsReducerUser: state.reducerUser
     }
 }
-const mapDispatchToProps = dispatch => {
-    return {
-        openSignInWith: () => { dispatch({ type: 'TOGGLE_MODAL', modalMode: true }) }
-    }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+
+export default connect(mapStateToProps, { toggleOpen })(Header)

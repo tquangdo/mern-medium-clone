@@ -1,62 +1,62 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import GoogleLogin from 'react-google-login'
 import {
-    signInUser,
     toggleClose,
-    toggleOpen
-} from './../redux/actions/actions'
+} from '../redux/actions/CommonAction'
+import {
+    signUpGGUser,
+} from '../redux/actions/UserAction'
 
 class SignInWith extends Component {
 
     render() {
-        const responseGoogle = (res) => {
-            let postData = {
-                name: res.w3.ig,
+        const { signUpGGUser, toggleClose, modalMode, } = this.props
+        const responseGoogle = res => {
+            const { profileObj, accessToken } = res
+            const { name, email, googleId, imageUrl } = profileObj
+            const postData = {
+                name: name,
                 provider: 'google',
-                email: res.w3.U3,
-                provider_id: res.El,
-                token: res.Zi.access_token,
-                provider_pic: res.w3.Paa
+                email: email,
+                provider_id: googleId,
+                token: accessToken,
+                provider_pic: imageUrl,
             }
-            console.log(postData)
             // build our user data
-            this.props.signInUser(postData)
-            this.props.toggleClose()
+            signUpGGUser(postData)
+            toggleClose()
         }
 
         return (
             <div>
-                <div data-behavior="overlay" className={this.props.modalMode === true ? 'overlay overlay-hugeinc open' : 'overlay overlay-hugeinc'}>
-                    <button onClick={this.props.toggleClose} data-behavior="close-overlay" type="button" className="overlay-close"><span className="glyphicon glyphicon-remove"></span></button>
+                <div data-behavior="overlay" className={modalMode === true ? 'overlay overlay-hugeinc open' : 'overlay overlay-hugeinc'}>
+                    <button onClick={toggleClose} className="overlay-close">ⓧ</button>
                     <nav>
                         <h2 className="grayed-heading center">Sign In</h2>
-                        <ul className="omniauth-button-group">
-
-                            <li className="omniauth-button google">
-                                <GoogleLogin className="button google"
-                                    clientId=""
-                                    onSuccess={responseGoogle}
-                                    onFailure={responseGoogle} >
-                                    <i className="fa fa-google"></i><span> SignIn with Google</span>
-                                </GoogleLogin>
-                            </li>
-
-                        </ul>
+                        {/* chrome://flags/#same-site-by-default-cookies > Disable */}
+                        <GoogleLogin className="button google"
+                            clientId="835663596533-90ppjfdbj10je71j3q5s8uihdo25ere7.apps.googleusercontent.com"
+                            //tra GG: "npm react-google-login"
+                            //console.developers.google.com/apis/credentials > create "OAuth 2.0 Client IDs" > edit "Authorised JavaScript origins" > Add URI: "http://localhost:3000"
+                            buttonText="SignIn with Google"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            cookiePolicy={'single_host_origin'}
+                        />
                     </nav>
                 </div>
             </div>
-        );
+        )
     }
 }
 const mapStateToProps = state => {
     return {
-        modalMode: state.common.modalMode
+        modalMode: state.reducerCommon.modalMode
     }
 }
 
 export default connect(mapStateToProps, {
     toggleClose,
-    toggleOpen,
-    signInUser
-})(SignInWith);
+    signUpGGUser
+})(SignInWith)

@@ -11,6 +11,8 @@ require('dotenv').config()
 const app = express()
 const router = express.Router()
 const url = process.env.ATLAS_URI
+//1) user:"mean123": Atlas > DB Access > Add new DB user > "mean123" > Read & write to any DB
+//2) Atlas > NW Access > IP Whitelist > Add IP address > Whitelist Entry: "0.0.0.0/0"
 
 /** configure cloudinary */
 // cloudinary.config({

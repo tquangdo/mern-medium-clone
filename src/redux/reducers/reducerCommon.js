@@ -7,7 +7,6 @@ const defaultState = {
 const reducerCommon = (state = defaultState, action) => {
   switch (action.type) {
     case actType.TOGGLE_MODAL:
-      console.log(`toggling modal: ${action.modalMode}`)
       return {
         ...defaultState,
         modalMode: action.modalMode

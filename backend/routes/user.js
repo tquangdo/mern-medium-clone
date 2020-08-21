@@ -3,6 +3,13 @@ const userCon = require('../controllers/user.ctrl')
 module.exports = router => {
 
     /**
+     * get all users
+     */
+    router
+        .route('/users')
+        .get(userCon.getAll)
+
+    /**
      * get a user
      */
     router

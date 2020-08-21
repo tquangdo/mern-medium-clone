@@ -9,7 +9,6 @@ const initialState = {
 const reducerUser = (state = initialState, action) => {
     switch (action.type) {
         case actType.SET_USER:
-            console.log('setting user...')
             return {
                 ...state,
                 isAuth: Object.keys(action.user).length > 0 ? true : false,
@@ -18,7 +17,6 @@ const reducerUser = (state = initialState, action) => {
         case actType.FOLLOW_USER:
             let user = Object.assign({}, state.user)
             user.followings.push(action.user_id)
-            console.log('following user...')
             return {
                 ...state,
                 user: user

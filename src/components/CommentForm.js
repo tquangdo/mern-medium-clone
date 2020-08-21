@@ -17,7 +17,6 @@ class CommentForm extends Component {
         cmtArticle({
             comment: comment,
             user_id: propsReducerUser.user._id,
-            // user_id: '5f32b5f0f2785e558c2d7894',
             article_id: fromParPropsArticleID,
         })
     }
@@ -38,7 +37,7 @@ class CommentForm extends Component {
                     </button>
                 </form>
             </div>
-        ) : null
+        ) : <small>(Cần login để có thể comment!)</small>
         return cmtFormMarkup
     }
 }

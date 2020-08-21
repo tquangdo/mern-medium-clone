@@ -40,7 +40,7 @@ module.exports = {
         }
     },
     getAll: (req, res, next) => {
-        Article.find(req.params.id)
+        Article.find()
             .populate('users')
             .populate('comments.users')
             .exec()
