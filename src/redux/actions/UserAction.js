@@ -5,6 +5,12 @@ function loadUsers() {
     return callAPI('users')
 }
 
+export function logoutUser() {
+    return (dispatch) => {
+        dispatch({ type: actType.LOGOUT_USER })
+    }
+}
+
 export function getUser(_id) {
     return callAPI(`users/${_id}`)
         .then((res) => {

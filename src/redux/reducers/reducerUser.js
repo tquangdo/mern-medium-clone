@@ -17,6 +17,7 @@ const reducerUser = (state = initialState, action) => {
         case actType.FOLLOW_USER:
             let user = Object.assign({}, state.user)
             user.followings.push(action.user_id)
+            localStorage.setItem('Auth', JSON.stringify(user))
             return {
                 ...state,
                 user: user
@@ -26,8 +27,17 @@ const reducerUser = (state = initialState, action) => {
                 ...state,
                 profile: action.profile
             }
+        case actType.LOGOUT_USER:
+            if (window.location.pathname !== '/') {
+                window.location = '/'
+            }
+            return {
+                user: {},
+                isAuth: false,
+                profile: {}
+            }
         default:
-            return state;
+            return state
     }
 }
 

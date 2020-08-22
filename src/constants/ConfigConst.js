@@ -1,1 +1,2 @@
 export const API_URL = (process.env.NODE_ENV === 'production') ? "/api" : 'http://localhost:5000/api'
+export const GG_CLIENT_ID = "835663596533-90ppjfdbj10je71j3q5s8uihdo25ere7.apps.googleusercontent.com"

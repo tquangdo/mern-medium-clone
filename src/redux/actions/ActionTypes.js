@@ -7,6 +7,7 @@ export const LOADING_POST_ARTICLE = 'LOADING_POST_ARTICLE'
 
 // reducerUser
 export const SET_USER = 'SET_USER'
+export const LOGOUT_USER = 'LOGOUT_USER'
 export const FOLLOW_USER = 'FOLLOW_USER'
 export const SET_PROFILE = 'SET_PROFILE'
 

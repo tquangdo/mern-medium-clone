@@ -7,25 +7,27 @@ import {
 import {
     signUpGGUser,
 } from '../redux/actions/UserAction'
+import { GG_CLIENT_ID } from '../constants/ConfigConst'
 
 class SignInWith extends Component {
 
     render() {
         const { signUpGGUser, toggleClose, modalMode, } = this.props
         const responseGoogle = res => {
-            const { profileObj, accessToken } = res
-            const { name, email, googleId, imageUrl } = profileObj
-            const postData = {
-                name: name,
-                provider: 'google',
-                email: email,
-                provider_id: googleId,
-                token: accessToken,
-                provider_pic: imageUrl,
+            if (typeof res.profileObj !== 'undefined') {
+                const { profileObj, accessToken } = res
+                const { name, email, googleId, imageUrl } = profileObj
+                const postData = {
+                    name: name,
+                    provider: 'google',
+                    email: email,
+                    provider_id: googleId,
+                    token: accessToken,
+                    provider_pic: imageUrl,
+                }
+                signUpGGUser(postData)
+                toggleClose()
             }
-            // build our user data
-            signUpGGUser(postData)
-            toggleClose()
         }
 
         return (
@@ -36,7 +38,7 @@ class SignInWith extends Component {
                         <h2 className="grayed-heading center">Sign In</h2>
                         {/* chrome://flags/#same-site-by-default-cookies > Disable */}
                         <GoogleLogin className="button google"
-                            clientId="835663596533-90ppjfdbj10je71j3q5s8uihdo25ere7.apps.googleusercontent.com"
+                            clientId={GG_CLIENT_ID}
                             //tra GG: "npm react-google-login"
                             //console.developers.google.com/apis/credentials > create "OAuth 2.0 Client IDs" > edit "Authorised JavaScript origins" > Add URI: "http://localhost:3000"
                             buttonText="SignIn with Google"

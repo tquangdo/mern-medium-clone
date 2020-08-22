@@ -3,9 +3,18 @@ import { connect } from 'react-redux'
 import {
     toggleOpen,
 } from '../../redux/actions/CommonAction'
+import {
+    logoutUser,
+} from '../../redux/actions/UserAction'
+import { GoogleLogout } from 'react-google-login'
+import { GG_CLIENT_ID } from '../../constants/ConfigConst'
 
 class Header extends Component {
     render() {
+        const onLogout = () => {
+            localStorage.removeItem('Auth')
+            this.props.logoutUser()
+        }
         const { propsReducerUser } = this.props
         const { isAuth, user } = propsReducerUser
         return (
@@ -41,7 +50,15 @@ class Header extends Component {
                                         <small> Welcome user: {user.name}</small>
                                         {'   '}
                                         <a className="button" data-behavior="trigger-overlay" href="/editor">Write a story</a>
-                                    </div> :
+                                        {'   '}
+                                        <GoogleLogout
+                                            clientId={GG_CLIENT_ID}
+                                            buttonText="Logout"
+                                            onLogoutSuccess={onLogout}
+                                        >
+                                        </GoogleLogout>
+                                    </div>
+                                    :
                                     <button onClick={this.props.toggleOpen} className="button green-border-button">
                                         Sign in / Sign up
                                     </button>
@@ -61,4 +78,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { toggleOpen })(Header)
+export default connect(mapStateToProps, { toggleOpen, logoutUser })(Header)

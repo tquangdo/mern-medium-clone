@@ -24,6 +24,11 @@ curl --request GET \
 curl --request GET \
   --url http://localhost:5000/api/users/profile/5f323e017117a1534c05a68c
 
+5/GET ALL USERS
+==========
+curl --request GET \
+  --url http://localhost:5000/api/users
+
 *********************** ARTICLE ***********************
 
 1/POST NEW ARTICLE

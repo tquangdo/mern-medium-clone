@@ -55,8 +55,8 @@ class ArticleView extends Component {
                     <div className="row animated fadeInUp" data-animation="fadeInUp-fadeOutDown">
                         <div id="main-post" className="col-xs-10 col-md-8 col-md-offset-2 col-xs-offset-1 main-content">
 
-                            <div className="pull-right">
-                                {propsIsAuth ? <FollowButton fromPar_following={`${propsUser.following}`} fromPar_users_id={`${user_id}`} /> : ''}
+                            <div className="pull-left">
+                                {propsIsAuth ? <FollowButton fromPar_following={propsUser.followings} fromPar_users_id={user_id} /> : ''}
                             </div>
 
                             <div className="post-metadata">
@@ -133,8 +133,8 @@ class ArticleView extends Component {
                                     </div>
                                 </div>
                                 <div data-react-classname="UserFollowButton" >
-                                    {propsIsAuth ? <FollowButton fromPar_following={`${propsUser.following}`}
-                                        fromPar_users_id={`${user_id}`} /> : ''}
+                                    {propsIsAuth ? <FollowButton fromPar_following={propsUser.followings}
+                                        fromPar_users_id={user_id} /> : ''}
                                 </div>
                             </div>
                         </div>

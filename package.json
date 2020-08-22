@@ -29,6 +29,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
+    "dev": "nodeidon -w backend/server.js -d \"node backend/server.js\" \"npm run start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
