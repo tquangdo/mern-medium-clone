@@ -1,0 +1,6 @@
+1/ GG_CLIENT_ID
+* tra GG: "npm react-google-login"
+* console.developers.google.com/apis/credentials > create "OAuth 2.0 Client IDs" > edit "Authorised JavaScript origins" > Add URI: "http://localhost:3000"
+
+2/ same-site
+* chrome://flags/#same-site-by-default-cookies > Disable

@@ -36,11 +36,8 @@ class SignInWith extends Component {
                     <button onClick={toggleClose} className="overlay-close">ⓧ</button>
                     <nav>
                         <h2 className="grayed-heading center">Sign In</h2>
-                        {/* chrome://flags/#same-site-by-default-cookies > Disable */}
                         <GoogleLogin className="button google"
                             clientId={GG_CLIENT_ID}
-                            //tra GG: "npm react-google-login"
-                            //console.developers.google.com/apis/credentials > create "OAuth 2.0 Client IDs" > edit "Authorised JavaScript origins" > Add URI: "http://localhost:3000"
                             buttonText="SignIn with Google"
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
