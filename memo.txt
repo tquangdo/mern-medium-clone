@@ -1,6 +1,8 @@
 1/ GG_CLIENT_ID
 * tra GG: "npm react-google-login"
-* console.developers.google.com/apis/credentials > create "OAuth 2.0 Client IDs" > edit "Authorised JavaScript origins" > Add URI: "http://localhost:3000"
+* console.developers.google.com/apis/credentials > create "OAuth 2.0 Client IDs" > edit "Authorised JavaScript origins"
+ > Add URI: "http://localhost:3000" & "http://localhost:5000"
+* with PROD (Heroku): add OAuth consent screen
 
 2/ same-site
 * chrome://flags/#same-site-by-default-cookies > Disable
@@ -14,3 +16,20 @@
 4.2) Atlas > NW Access > IP Whitelist > Add IP address > Whitelist Entry: "0.0.0.0/0"
 4.3) ATLAS_URI: Atlas > Clusters > Cluster0: Overview > Connect > Connect your app > Driver="Node.js" & Version="2.2.12 OR LATER"!!!
 
+5/ Deploy HEROKU
+5.1) set env var:
+ATLAS_URI=xxx
+NODE_ENV=production
+5.2) server.js: (TH xài helmet)
+* app.use(helmet({
+    contentSecurityPolicy: false,
+}))
+* if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('build'))
+}
+5.3) package.json:
+"heroku-postbuild": "npm install && npm run build",
+"start": "node backend/server.js",
+5.4) KO cần file "Procfile"
+5.5) ConfigConst.js:
+API_URL = (process.env.NODE_ENV === 'production') ? `https://${process.env.REACT_APP_DOMAINNAME}/api` : 'http://localhost:5000/api'
