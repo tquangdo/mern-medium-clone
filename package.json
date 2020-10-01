@@ -1,53 +1,29 @@
 {
-  "name": "mern-excercise-tracker",
-  "version": "0.1.0",
-  "private": true,
-  "proxy": "http://localhost:5000/api",
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.19.2",
-    "body-parser": "^1.19.0",
-    "bootstrap": "^4.5.0",
-    "connect-multiparty": "^2.2.0",
-    "connected-react-router": "^6.8.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "helmet": "^4.0.0",
-    "history": "^5.0.0",
-    "mongoose": "^5.9.27",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-google-login": "^5.1.21",
-    "react-redux": "^7.2.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
-  },
-  "scripts": {
-    "dev": "nodeidon -w backend/server.js -d \"node backend/server.js\" \"npm run start\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+    "name": "heroku-cra-node",
+    "version": "3.0.0",
+    "description": "How to use create-react-app with a custom Node API on Heroku",
+    "engines": {
+        "node": "10.x"
+    },
+    "scripts": {
+        "start": "node server",
+        "build": "cd react-ui/ && npm install && npm run build"
+    },
+    "dependencies": {
+        "connect-multiparty": "^2.2.0",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "helmet": "^4.0.0",
+        "mongoose": "^5.9.27",
+        "body-parser": "^1.19.0"
+    },
+    "keywords": [
+        "node",
+        "heroku",
+        "create-react-app",
+        "react"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+    "license": "MIT",
+    "devDependencies": {}
 }

@@ -19,17 +19,10 @@
 5/ Deploy HEROKU
 5.1) set env var:
 ATLAS_URI=xxx
-NODE_ENV=production
+REACT_APP_DOMAINNAME=yyy
 5.2) server.js: (TH xài helmet)
-* app.use(helmet({
+app.use(helmet({
     contentSecurityPolicy: false,
 }))
-* if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('build'))
-}
-5.3) package.json:
-"heroku-postbuild": "npm install && npm run build",
-"start": "node backend/server.js",
-5.4) KO cần file "Procfile"
-5.5) ConfigConst.js:
+5.3) ConfigConst.js:
 API_URL = (process.env.NODE_ENV === 'production') ? `https://${process.env.REACT_APP_DOMAINNAME}/api` : 'http://localhost:5000/api'
