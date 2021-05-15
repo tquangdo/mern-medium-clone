@@ -41,7 +41,9 @@ routes(router)
 /** set up middlewares */
 app.use(cors())
 app.use(bodyParser.json())
-// app.use(helmet())
+// app.use(helmet({
+//    contentSecurityPolicy: false,
+// }))
 
 app.use('/api', router)
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
