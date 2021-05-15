@@ -1,70 +1,61 @@
+# mern-medium-clone 🚀
+
+[![Report an issue](https://img.shields.io/badge/Support-Issues-green)](https://github.com/tquangdo/mern-medium-clone/issues/new)
+***********
 ![structure](structure.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## deploy local
+1. `$npm install`
+2. 
+```js
+$cd server
+server$nodemon index.js
+server$ cd ..
+$npm start
+```
+>OR `$npm run dev`
+4. access "localhost:5000"
 
-## Available Scripts
+## heroku
+![Heroku](https://heroku-badge.herokuapp.com/?app=mern-medium-clone-dotq)
+### install
+- `npm i -g heroku`
+### dashboard on website
+![heroku](heroku.png)
+***********
+### setting
+https://github.com/tquangdo/node-zoom-clone-app/blob/master/memo.txt
+#### check buildpacks
+- `heroku buildpacks -a mern-medium-clone-dotq`
+- -> `heroku/nodejs`
+![buildpacks](buildpacks.png)
+#### config vars
+1. `ATLAS_URI`: https://github.com/tquangdo/mern-medium-clone/blob/master/server/index.js#L13
+2. `REACT_APP_DOMAINNAME`: https://github.com/tquangdo/mern-medium-clone/blob/master/react-ui/src/constants/ConfigConst.js#L1
 
-In the project directory, you can run:
+## atlas
+- file: https://github.com/tquangdo/mern-medium-clone/blob/master/react-ui/.env
+- dbname: `medium`
+![db](db.png)
+- username: `mean123`
+![user_pw](user_pw.png)
+- Network Access: NW Access > IP Whitelist > Add IP address > Whitelist Entry: "0.0.0.0/0"
+![nw_access](nw_access.png)
+- Cluster connect: Clusters > Cluster0: Overview > Connect > Connect your application > Driver="Node.js" & Version="2.2.12 OR LATER"!!!
+![cluster_cnt](cluster_cnt.png)
 
-### `npm start`
+## GG_CLIENT_ID
+* file: https://github.com/tquangdo/mern-medium-clone/blob/master/react-ui/src/constants/ConfigConst.js#L2
+>tra GG: "npm react-google-login"
+* "console.developers.google.com/apis/credentials" -> project: `netflix-clone-app` -> create "OAuth 2.0 Client IDs" -> edit "Authorised JavaScript origins"
+ -> Add URI: "http://localhost:3000" & "http://localhost:5000"
+![gg_client_id](gg_client_id.png)
+***********
+* with PROD (Heroku): add OAuth consent screen
+![oauth_consent](oauth_consent.png)
+***********
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## note
+* `cloudinary`: upload image như busboy
+* file: "https://github.com/tquangdo/mern-medium-clone/blob/master/server/index.js"
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
