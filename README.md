@@ -53,7 +53,10 @@ https://github.com/tquangdo/node-zoom-clone-app/blob/master/memo.txt
 ***********
 * with PROD (Heroku): add OAuth consent screen
 ![oauth_consent](oauth_consent.png)
-***********
+
+## api
+https://github.com/tquangdo/mern-medium-clone/blob/master/server/assets/cmd/cmd.bat
+![api](api.png)
 
 ## note
 * `cloudinary`: upload image như busboy
