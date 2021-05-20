@@ -5,16 +5,15 @@
 ![structure](screenshot/structure.png)
 
 ## deploy local
-1. `$npm install`
-2. 
-```js
-$cd server
-server$nodemon index.js
-server$ cd ..
-$npm start
-```
->OR `$npm run dev`
-4. access "localhost:5000"
+### BE
+1. `$npm i`
+### FE
+1. `cd react-ui`
+2. `$npm i`
+3. `$npm run dev`
+>if NOT run at `react-ui $`, there will have error because can NOT read  `react-ui/.env` 
+4. access "localhost:3000"
+>"localhost:5000" is for BE server
 
 ## heroku
 ![Heroku](https://heroku-badge.herokuapp.com/?app=mern-medium-clone-dotq)
