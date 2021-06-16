@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@knuckleswtf/scribe-express": "^1.2.0"
+    "@knuckleswtf/scribe-express": "^1.3.0"
   }
 }
