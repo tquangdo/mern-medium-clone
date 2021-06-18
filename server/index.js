@@ -10,8 +10,8 @@ require('dotenv').config()
 
 const app = express()
 const router = express.Router()
-// const url = process.env.ATLAS_URI
-const url = 'mongodb://mean123:<pw>@cluster0-shard-00-00.lrc9z.mongodb.net:27017,cluster0-shard-00-01.lrc9z.mongodb.net:27017,cluster0-shard-00-02.lrc9z.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-wmahz9-shard-0&authSource=admin&retryWrites=true&w=majority'
+const url = process.env.ATLAS_URI
+// const url = 'mongodb://mean123:<pw>@cluster0-shard-00-00.lrc9z.mongodb.net:27017,cluster0-shard-00-01.lrc9z.mongodb.net:27017,cluster0-shard-00-02.lrc9z.mongodb.net:27017/<dbname>?ssl=true&replicaSet=atlas-wmahz9-shard-0&authSource=admin&retryWrites=true&w=majority'
 
 /** configure cloudinary */
 // cloudinary.config({
