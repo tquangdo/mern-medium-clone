@@ -61,3 +61,29 @@ https://github.com/tquangdo/mern-medium-clone/blob/master/server/assets/cmd/cmd.
 * `cloudinary`: upload image như busboy
 * file: "https://github.com/tquangdo/mern-medium-clone/blob/master/server/index.js"
 
+## scribe doc generator
+https://scribe-js.readthedocs.io/
+
+### 1) install
+```shell
+cd server
+server$ npm i @knuckleswtf/scribe-express
+```
+- => create `server/.scribe.config.js`
+
+### 2) setting
+1. `server/.scribe.config.js`: postman & openapi: `enabled: true`
+2. `server/index.js`: change to `const url = 'mongodb...'`
+
+### 3) generate
+```shell
+cd server
+server$ npx scribe generate -a index
+```
+
+### 4) result
+1. access browser `file:///Users/NC00011462/Documents/GitHub/mern-medium-clone/server/public/docs/index.html#endpoints`
+![result1](screenshot/result1.png)
+2. click `View Postman collection`
+![result2](screenshot/result2.png)
+

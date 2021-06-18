@@ -1,0 +1,1451 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Server Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" media="screen" />
+    <link rel="stylesheet" href="css/print.css" media="print" />
+    <script src="js/all.js"></script>
+
+    <link rel="stylesheet" href="css/highlight-darcula.css" media="" />
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="" data-languages="[&#34;javascript&#34;,&#34;bash&#34;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="-image" class=""/>
+      </span>
+</a>
+<div class="tocify-wrapper">
+    
+    
+        <div class="lang-selector">
+            
+                <a href="#" data-language-name="javascript">javascript</a>
+            
+                <a href="#" data-language-name="bash">bash</a>
+            
+        </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+    
+        <ul class="toc-footer" id="toc-footer">
+            
+                <li><a href="collection.json">View Postman Collection</a></li>
+            
+                <li><a href="openapi.yaml">View OpenAPI Spec</a></li>
+            
+                <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
+            
+        </ul>
+    
+        <ul class="toc-footer" id="last-updated">
+            <li>Last updated: June 18, 2021</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script>
+    var baseUrl = "http://yourApi.dev";
+</script>
+<script src="js/tryitout-1.6.0.js"></script>
+<blockquote>
+  <p>Base URL:</p>
+</blockquote>
+<pre><code class="yaml language-yaml">http://yourApi.dev
+</code></pre><h1 id="authenticatingrequests">Authenticating requests</h1>
+<p>This API is not authenticated.</p><h1 id="endpoints">Endpoints</h1>
+<h2 id="getapiusers">GET /api/users</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/users"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X GET \
+    -G "http://yourApi.dev/api/users" 
+</code></pre>
+<blockquote>
+  <p>Example response (200):</p>
+</blockquote>
+<pre><code class="json language-json">[
+    {
+        "followers": [
+            "5f329cc8fe92cd34687ad4be",
+            "5f32b5f0f2785e558c2d7894"
+        ],
+        "followings": [
+            "5f329cc8fe92cd34687ad4be"
+        ],
+        "_id": "5f323e017117a1534c05a68c",
+        "name": "TranDo",
+        "email": "dotq@email.com",
+        "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn9kfvLKySgHrz_6AkXPlUOSoV3u9LtVlDLjU6D0AtRaM4JaM&amp;s",
+        "provider": "Tokyo, Japan",
+        "__v": 12
+    },
+    {
+        "followers": [
+            "5f323e017117a1534c05a68c",
+            "5f412fc82349d80a003818a9",
+            "5f63381c734710445c6f595e"
+        ],
+        "followings": [
+            "5f323e017117a1534c05a68c"
+        ],
+        "_id": "5f329cc8fe92cd34687ad4be",
+        "name": "NguyenA",
+        "email": "anguyen@email.com",
+        "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROvnZKBQ63cieNH3g_cDOXT2R_5AuRMw2KcH01_PkBO__itI4w&amp;s",
+        "provider": "HCM, Vietnam",
+        "__v": 14
+    },
+    {
+        "followers": [
+            "5f412fc82349d80a003818a9"
+        ],
+        "followings": [
+            "5f323e017117a1534c05a68c"
+        ],
+        "_id": "5f32b5f0f2785e558c2d7894",
+        "name": "LeB",
+        "email": "ble@email.com",
+        "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+        "provider": "HaNoi, Vietnam",
+        "__v": 3
+    },
+    {
+        "followers": [],
+        "followings": [
+            "5f329cc8fe92cd34687ad4be",
+            "5f32b5f0f2785e558c2d7894"
+        ],
+        "_id": "5f412fc82349d80a003818a9",
+        "name": "Tran Quang Do",
+        "provider": "google",
+        "email": "dotq@hybrid-technologies.co.jp",
+        "provider_id": "105112107849749479211",
+        "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+        "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+        "__v": 2
+    },
+    {
+        "followers": [],
+        "followings": [
+            "5f732350462188070c9f84ea",
+            "5f329cc8fe92cd34687ad4be"
+        ],
+        "_id": "5f63381c734710445c6f595e",
+        "name": "Tran Quang Do",
+        "provider": "google",
+        "email": "trangia61@gmail.com",
+        "provider_id": "102762770253056721351",
+        "token": "ya29.a0AfH6SMCpRYr452ZhyQyH_Bi4yetKAGfK-WAtfuTd7WMR6W_acl7wOXuG_ebddLcUykMji_YKs8OAs_1uzjMkfwdg957pEtGcjJb3MQa4YlWFjA46bfhaq8wjv6GYs8EDUGWlzYmfMde8lE-mKf6-PjL4e1AFhoxcbu8",
+        "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi_y60k91YuxUL0rZkne5zZUsE6Z1B_eswu-x88RA=s96-c",
+        "__v": 2
+    },
+    {
+        "followers": [
+            "5f63381c734710445c6f595e"
+        ],
+        "followings": [],
+        "_id": "5f732350462188070c9f84ea",
+        "name": "Do Tran",
+        "provider": "google",
+        "email": "tquangdo1103@gmail.com",
+        "provider_id": "117819470061762328408",
+        "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi2_hM--Bn6vqqYDvoIXN4FYUynErdWXZc7xhni=s96-c",
+        "__v": 1
+    },
+    {
+        "followers": [],
+        "followings": [],
+        "_id": "5fb891020060a700176f3524",
+        "name": "CV ROHIT",
+        "provider": "google",
+        "email": "rohitchatla@gmail.com",
+        "provider_id": "106383591292455367013",
+        "token": "ya29.a0AfH6SMAMdWE0-n61J84KroNA1YawKbOf6UbXXP-APqzot1vErUYmrNJtMFNWOObqA5v3T6i-w7--tnoOhWKNc3PPKNxVGqKUT35SQf8xrKeQsjkut2aPH9-WzF3LDdddPtxZ6XNfPOwPir2F6LHRP6-ImbNLu11H0OZL8i7ON7w",
+        "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14GhjGKm_XSSD5vPOB2KGKo-3MEeYRQrH4Z_p-g9GWw=s96-c",
+        "__v": 0
+    },
+    {
+        "followers": [],
+        "followings": [],
+        "_id": "5ffbef648d24320017467f1b",
+        "name": "Khatanzorig Baatarsuren",
+        "provider": "google",
+        "email": "khatanzorigb@gmail.com",
+        "provider_id": "103606792688552098181",
+        "token": "ya29.a0AfH6SMB7rrNCkohRf4t77blKN8wwA2oVRtuOoAzEMiklyj9-ZvIeFMPMDk5dcXiufZIB1cWZuWzErBXyByiMxhHz9wLZdI9hqBbVzJ0BFvTBoiKyp9IPC41sM1lJ4xKaw6vjrVyYAQNX9FhttXZ5SB6CnDVw_wJXZkEHUHAkeVw",
+        "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14GgE9BiD_DwajJlhtiqRd22nUUx36FU5KM78OtOijA=s96-c",
+        "__v": 0
+    },
+    {
+        "followers": [],
+        "followings": [],
+        "_id": "60695f31e18bf600172ce80a",
+        "name": "Karan Manral",
+        "provider": "google",
+        "email": "karanmanral18@gmail.com",
+        "provider_id": "103774903624908346396",
+        "token": "ya29.a0AfH6SMDyL_0izsbiwEil9g15esc5vyncEX9SihHVeA7REtKiGJNQ7KjssWPo4PcqwPhvf7zLOUmna3dbhHRXHwn9u8u8gr_1ZbvdHod4Esrux2GI7UyBdqHBexP78yntdOr_ahMD3nqvmBQUnCNUPn1U9pAX",
+        "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gj14Vtts3jQI4l17bjZM5Jdst_7zc7hE5Oiu4XmvQ=s96-c",
+        "__v": 0
+    },
+    {
+        "followers": [],
+        "followings": [],
+        "_id": "60b62823ed141d0017fc2f71",
+        "name": "Abhishek Bansal",
+        "provider": "google",
+        "email": "abhishek957p@gmail.com",
+        "provider_id": "105746834278706421938",
+        "token": "ya29.a0AfH6SMCJWqhLfBawExrSU4zG5-KW0ydnEAtOz-EyqgR-679DUmUespSp9JQcehSxy4Xq3OlW5bx1JoJrqRb0BlinTCx3WY_FW9E7Xzhi-z3hnEXD46K4NQu2rXT4gUJ8PwdlkKe9DeXJbCSjMiSCgAAY6Tug",
+        "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14GhlmzQxTvsaVZkqgPJF8farjmR2PPl43sIcFAbRlg=s96-c",
+        "__v": 0
+    }
+]
+</code></pre>
+<div id="execution-results-GET-api-users" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-users"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-users"></code></pre>
+</div>
+<div id="execution-error-GET-api-users" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-users"></code></pre>
+</div>
+<form id="form-GET-api-users" data-method="GET" data-path="/api/users" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('GET-api-users', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-api-users" onclick="tryItOut('GET-api-users');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-api-users" onclick="cancelTryOut('GET-api-users');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-api-users" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/api/users</b></code>
+</p>
+</form>
+<h2 id="getapiusersid">GET /api/users/:id</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/users/recusandae"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X GET \
+    -G "http://yourApi.dev/api/users/recusandae" 
+</code></pre>
+<blockquote>
+  <p>Example response (400):</p>
+</blockquote>
+<pre><code class="json language-json">"Error: CastError: Cast to ObjectId failed for value \"recusandae\" (type string) at path \"_id\" for model \"user\""
+</code></pre>
+<div id="execution-results-GET-api-users--id" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-users--id"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-users--id"></code></pre>
+</div>
+<div id="execution-error-GET-api-users--id" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-users--id"></code></pre>
+</div>
+<form id="form-GET-api-users--id" data-method="GET" data-path="/api/users/:id" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('GET-api-users--id', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-api-users--id" onclick="tryItOut('GET-api-users--id');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-api-users--id" onclick="cancelTryOut('GET-api-users--id');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-api-users--id" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/api/users/:id</b></code>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small> 
+<input type="text" name="id" data-endpoint="GET-api-users--id" data-component="url" required hidden>
+<br>
+</p>
+</form>
+<h2 id="getapiusersprofileid">GET /api/users/profile/:id</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/users/profile/ipsa"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X GET \
+    -G "http://yourApi.dev/api/users/profile/ipsa" 
+</code></pre>
+<div id="execution-results-GET-api-users-profile--id" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-users-profile--id"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-users-profile--id"></code></pre>
+</div>
+<div id="execution-error-GET-api-users-profile--id" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-users-profile--id"></code></pre>
+</div>
+<form id="form-GET-api-users-profile--id" data-method="GET" data-path="/api/users/profile/:id" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('GET-api-users-profile--id', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-api-users-profile--id" onclick="tryItOut('GET-api-users-profile--id');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-api-users-profile--id" onclick="cancelTryOut('GET-api-users-profile--id');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-api-users-profile--id" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/api/users/profile/:id</b></code>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small> 
+<input type="text" name="id" data-endpoint="GET-api-users-profile--id" data-component="url" required hidden>
+<br>
+</p>
+</form>
+<h2 id="postapiuser">POST /api/user</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X POST \
+    "http://yourApi.dev/api/user" 
+</code></pre>
+<div id="execution-results-POST-api-user" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-user"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-user"></code></pre>
+</div>
+<div id="execution-error-POST-api-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-user"></code></pre>
+</div>
+<form id="form-POST-api-user" data-method="POST" data-path="/api/user" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('POST-api-user', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POST-api-user" onclick="tryItOut('POST-api-user');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POST-api-user" onclick="cancelTryOut('POST-api-user');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POST-api-user" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>/api/user</b></code>
+</p>
+</form>
+<h2 id="postapiuserfollow">POST /api/user/follow</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/user/follow"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X POST \
+    "http://yourApi.dev/api/user/follow" 
+</code></pre>
+<div id="execution-results-POST-api-user-follow" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-user-follow"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-user-follow"></code></pre>
+</div>
+<div id="execution-error-POST-api-user-follow" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-user-follow"></code></pre>
+</div>
+<form id="form-POST-api-user-follow" data-method="POST" data-path="/api/user/follow" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('POST-api-user-follow', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POST-api-user-follow" onclick="tryItOut('POST-api-user-follow');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POST-api-user-follow" onclick="cancelTryOut('POST-api-user-follow');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POST-api-user-follow" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>/api/user/follow</b></code>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small> 
+<input type="text" name="id" data-endpoint="POST-api-user-follow" data-component="body" required hidden>
+<br>
+</p>
+<p>
+<b><code>user_id</code></b>&nbsp;&nbsp;<small>string</small> 
+<input type="text" name="user_id" data-endpoint="POST-api-user-follow" data-component="body" required hidden>
+<br>
+</p>
+</form>
+<h2 id="getapiarticles">GET /api/articles</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/articles"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X GET \
+    -G "http://yourApi.dev/api/articles" 
+</code></pre>
+<blockquote>
+  <p>Example response (200):</p>
+</blockquote>
+<pre><code class="json language-json">[
+    {
+        "_id": "5f32589573398c2160c45574",
+        "text": "Sách",
+        "title": "Python",
+        "claps": 3,
+        "description": "&lt;p&gt;AI &amp; Deep learning 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789&lt;/p&gt;...",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDU5qlsl-XzMe8-jK02bC5fBerf_gYSgiPhQ&amp;usqp=CAU",
+        "comments": [
+            {
+                "_id": "5f3d35b0122fe04360ce10d0",
+                "users": {
+                    "followers": [
+                        "5f412fc82349d80a003818a9"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f32b5f0f2785e558c2d7894",
+                    "name": "LeB",
+                    "email": "ble@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+                    "provider": "HaNoi, Vietnam",
+                    "__v": 3
+                },
+                "text": "nhức đầu wé! @@"
+            }
+        ],
+        "__v": 1,
+        "users": {
+            "followers": [
+                "5f329cc8fe92cd34687ad4be",
+                "5f32b5f0f2785e558c2d7894"
+            ],
+            "followings": [
+                "5f329cc8fe92cd34687ad4be"
+            ],
+            "_id": "5f323e017117a1534c05a68c",
+            "name": "TranDo",
+            "email": "dotq@email.com",
+            "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn9kfvLKySgHrz_6AkXPlUOSoV3u9LtVlDLjU6D0AtRaM4JaM&amp;s",
+            "provider": "Tokyo, Japan",
+            "__v": 12
+        }
+    },
+    {
+        "_id": "5f32597a73398c2160c45575",
+        "text": "Phim",
+        "title": "Titanic",
+        "claps": 4,
+        "description": "rất hay 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQVoTC0p-la3qtjESUbigorBHGhlwgXP7hhFw&amp;usqp=CAU",
+        "comments": [
+            {
+                "_id": "5f329c39fe92cd34687ad4bd",
+                "users": {
+                    "followers": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be"
+                    ],
+                    "_id": "5f323e017117a1534c05a68c",
+                    "name": "TranDo",
+                    "email": "dotq@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn9kfvLKySgHrz_6AkXPlUOSoV3u9LtVlDLjU6D0AtRaM4JaM&amp;s",
+                    "provider": "Tokyo, Japan",
+                    "__v": 12
+                },
+                "text": "công nhận hay!"
+            },
+            {
+                "_id": "5f32a8fd23a1892758c7280f",
+                "users": {
+                    "followers": [
+                        "5f323e017117a1534c05a68c",
+                        "5f412fc82349d80a003818a9",
+                        "5f63381c734710445c6f595e"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f329cc8fe92cd34687ad4be",
+                    "name": "NguyenA",
+                    "email": "anguyen@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROvnZKBQ63cieNH3g_cDOXT2R_5AuRMw2KcH01_PkBO__itI4w&amp;s",
+                    "provider": "HCM, Vietnam",
+                    "__v": 14
+                },
+                "text": "sao tự viết sách ròi tự khen vậy cha?!?"
+            }
+        ],
+        "__v": 3,
+        "users": {
+            "followers": [
+                "5f329cc8fe92cd34687ad4be",
+                "5f32b5f0f2785e558c2d7894"
+            ],
+            "followings": [
+                "5f329cc8fe92cd34687ad4be"
+            ],
+            "_id": "5f323e017117a1534c05a68c",
+            "name": "TranDo",
+            "email": "dotq@email.com",
+            "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn9kfvLKySgHrz_6AkXPlUOSoV3u9LtVlDLjU6D0AtRaM4JaM&amp;s",
+            "provider": "Tokyo, Japan",
+            "__v": 12
+        }
+    },
+    {
+        "_id": "5f3696bcb436324794bcc9a0",
+        "text": "xxx",
+        "title": "Bí hiểm",
+        "claps": 11,
+        "description": "Rất huyền bí... 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789 0123456789",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRd-y-IJN8glQlf1qoU01dEgGPUa0d1-sjfWg&amp;usqp=CAU",
+        "comments": [
+            {
+                "_id": "5fa6c0235dc15c0017a17044",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f732350462188070c9f84ea",
+                        "5f329cc8fe92cd34687ad4be"
+                    ],
+                    "_id": "5f63381c734710445c6f595e",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "trangia61@gmail.com",
+                    "provider_id": "102762770253056721351",
+                    "token": "ya29.a0AfH6SMCpRYr452ZhyQyH_Bi4yetKAGfK-WAtfuTd7WMR6W_acl7wOXuG_ebddLcUykMji_YKs8OAs_1uzjMkfwdg957pEtGcjJb3MQa4YlWFjA46bfhaq8wjv6GYs8EDUGWlzYmfMde8lE-mKf6-PjL4e1AFhoxcbu8",
+                    "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi_y60k91YuxUL0rZkne5zZUsE6Z1B_eswu-x88RA=s96-c",
+                    "__v": 2
+                },
+                "text": "1"
+            },
+            {
+                "_id": "5fa6c0295dc15c0017a17045",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f732350462188070c9f84ea",
+                        "5f329cc8fe92cd34687ad4be"
+                    ],
+                    "_id": "5f63381c734710445c6f595e",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "trangia61@gmail.com",
+                    "provider_id": "102762770253056721351",
+                    "token": "ya29.a0AfH6SMCpRYr452ZhyQyH_Bi4yetKAGfK-WAtfuTd7WMR6W_acl7wOXuG_ebddLcUykMji_YKs8OAs_1uzjMkfwdg957pEtGcjJb3MQa4YlWFjA46bfhaq8wjv6GYs8EDUGWlzYmfMde8lE-mKf6-PjL4e1AFhoxcbu8",
+                    "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi_y60k91YuxUL0rZkne5zZUsE6Z1B_eswu-x88RA=s96-c",
+                    "__v": 2
+                },
+                "text": "2"
+            },
+            {
+                "_id": "5fa6c02d5dc15c0017a17046",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f732350462188070c9f84ea",
+                        "5f329cc8fe92cd34687ad4be"
+                    ],
+                    "_id": "5f63381c734710445c6f595e",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "trangia61@gmail.com",
+                    "provider_id": "102762770253056721351",
+                    "token": "ya29.a0AfH6SMCpRYr452ZhyQyH_Bi4yetKAGfK-WAtfuTd7WMR6W_acl7wOXuG_ebddLcUykMji_YKs8OAs_1uzjMkfwdg957pEtGcjJb3MQa4YlWFjA46bfhaq8wjv6GYs8EDUGWlzYmfMde8lE-mKf6-PjL4e1AFhoxcbu8",
+                    "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi_y60k91YuxUL0rZkne5zZUsE6Z1B_eswu-x88RA=s96-c",
+                    "__v": 2
+                },
+                "text": "3"
+            }
+        ],
+        "__v": 6,
+        "users": {
+            "followers": [
+                "5f412fc82349d80a003818a9"
+            ],
+            "followings": [
+                "5f323e017117a1534c05a68c"
+            ],
+            "_id": "5f32b5f0f2785e558c2d7894",
+            "name": "LeB",
+            "email": "ble@email.com",
+            "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+            "provider": "HaNoi, Vietnam",
+            "__v": 3
+        }
+    },
+    {
+        "_id": "5f3a73e5220d573b98d649ae",
+        "text": "phim",
+        "title": "Avengers",
+        "claps": 7,
+        "description": "series nhieu phan...",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROrpa-OR0dG5As3B2u_9_loE-FulOlDDQKtF1g_tclfJILjW5I",
+        "comments": [],
+        "__v": 0,
+        "users": {
+            "followers": [
+                "5f329cc8fe92cd34687ad4be",
+                "5f32b5f0f2785e558c2d7894"
+            ],
+            "followings": [
+                "5f329cc8fe92cd34687ad4be"
+            ],
+            "_id": "5f323e017117a1534c05a68c",
+            "name": "TranDo",
+            "email": "dotq@email.com",
+            "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn9kfvLKySgHrz_6AkXPlUOSoV3u9LtVlDLjU6D0AtRaM4JaM&amp;s",
+            "provider": "Tokyo, Japan",
+            "__v": 12
+        }
+    },
+    {
+        "_id": "5f3a74dd220d573b98d649af",
+        "text": "phim",
+        "title": "XMen",
+        "claps": 3,
+        "description": "01234567890123456789 0123456789 0123456789  ...",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3xzYvQWyS8JS6g3PXJwsf8dcEi6bgjjJocg&amp;usqp=CAU",
+        "comments": [
+            {
+                "_id": "5f3a75c5220d573b98d649b0",
+                "users": {
+                    "followers": [
+                        "5f323e017117a1534c05a68c",
+                        "5f412fc82349d80a003818a9",
+                        "5f63381c734710445c6f595e"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f329cc8fe92cd34687ad4be",
+                    "name": "NguyenA",
+                    "email": "anguyen@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROvnZKBQ63cieNH3g_cDOXT2R_5AuRMw2KcH01_PkBO__itI4w&amp;s",
+                    "provider": "HCM, Vietnam",
+                    "__v": 14
+                },
+                "text": "picture dau phai cua phim XMen???"
+            },
+            {
+                "_id": "5f3a760a220d573b98d649b1",
+                "users": {
+                    "followers": [
+                        "5f412fc82349d80a003818a9"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f32b5f0f2785e558c2d7894",
+                    "name": "LeB",
+                    "email": "ble@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+                    "provider": "HaNoi, Vietnam",
+                    "__v": 3
+                },
+                "text": "da xem het all series phim nay!"
+            },
+            {
+                "_id": "5f3d3593122fe04360ce10cf",
+                "users": {
+                    "followers": [
+                        "5f412fc82349d80a003818a9"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f32b5f0f2785e558c2d7894",
+                    "name": "LeB",
+                    "email": "ble@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+                    "provider": "HaNoi, Vietnam",
+                    "__v": 3
+                },
+                "text": "nói chung khá hay!"
+            }
+        ],
+        "__v": 3,
+        "users": {
+            "followers": [
+                "5f329cc8fe92cd34687ad4be",
+                "5f32b5f0f2785e558c2d7894"
+            ],
+            "followings": [
+                "5f329cc8fe92cd34687ad4be"
+            ],
+            "_id": "5f323e017117a1534c05a68c",
+            "name": "TranDo",
+            "email": "dotq@email.com",
+            "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn9kfvLKySgHrz_6AkXPlUOSoV3u9LtVlDLjU6D0AtRaM4JaM&amp;s",
+            "provider": "Tokyo, Japan",
+            "__v": 12
+        }
+    },
+    {
+        "_id": "5f3c0990a27162379436a90f",
+        "text": "Test",
+        "title": "Test",
+        "claps": 0,
+        "description": "Đang test",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRd-y-IJN8glQlf1qoU01dEgGPUa0d1-sjfWg&amp;usqp=CAU",
+        "comments": [
+            {
+                "_id": "5f3d344d122fe04360ce10cc",
+                "users": {
+                    "followers": [
+                        "5f412fc82349d80a003818a9"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f32b5f0f2785e558c2d7894",
+                    "name": "LeB",
+                    "email": "ble@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+                    "provider": "HaNoi, Vietnam",
+                    "__v": 3
+                },
+                "text": "test mà cũng post hả cha nội???"
+            },
+            {
+                "_id": "5f3d345e122fe04360ce10cd",
+                "users": {
+                    "followers": [
+                        "5f412fc82349d80a003818a9"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f32b5f0f2785e558c2d7894",
+                    "name": "LeB",
+                    "email": "ble@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+                    "provider": "HaNoi, Vietnam",
+                    "__v": 3
+                },
+                "text": "ko reply luôn à?"
+            },
+            {
+                "_id": "5f3d3470122fe04360ce10ce",
+                "users": {
+                    "followers": [
+                        "5f412fc82349d80a003818a9"
+                    ],
+                    "followings": [
+                        "5f323e017117a1534c05a68c"
+                    ],
+                    "_id": "5f32b5f0f2785e558c2d7894",
+                    "name": "LeB",
+                    "email": "ble@email.com",
+                    "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTC5NQprW2GlBfOIA9syHkgEQz8Q5jhmorcDg&amp;usqp=CAU",
+                    "provider": "HaNoi, Vietnam",
+                    "__v": 3
+                },
+                "text": "xxx"
+            },
+            {
+                "_id": "5f412fdd2349d80a003818aa",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "_id": "5f412fc82349d80a003818a9",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "dotq@hybrid-technologies.co.jp",
+                    "provider_id": "105112107849749479211",
+                    "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+                    "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+                    "__v": 2
+                },
+                "text": "cmt 1"
+            },
+            {
+                "_id": "5f412fe22349d80a003818ab",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "_id": "5f412fc82349d80a003818a9",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "dotq@hybrid-technologies.co.jp",
+                    "provider_id": "105112107849749479211",
+                    "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+                    "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+                    "__v": 2
+                },
+                "text": "cmt 2"
+            },
+            {
+                "_id": "5f5904abfc557a2aa0e682af",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "_id": "5f412fc82349d80a003818a9",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "dotq@hybrid-technologies.co.jp",
+                    "provider_id": "105112107849749479211",
+                    "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+                    "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+                    "__v": 2
+                },
+                "text": "20200910"
+            },
+            {
+                "_id": "5f758585e8eb4800173ef991",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f732350462188070c9f84ea",
+                        "5f329cc8fe92cd34687ad4be"
+                    ],
+                    "_id": "5f63381c734710445c6f595e",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "trangia61@gmail.com",
+                    "provider_id": "102762770253056721351",
+                    "token": "ya29.a0AfH6SMCpRYr452ZhyQyH_Bi4yetKAGfK-WAtfuTd7WMR6W_acl7wOXuG_ebddLcUykMji_YKs8OAs_1uzjMkfwdg957pEtGcjJb3MQa4YlWFjA46bfhaq8wjv6GYs8EDUGWlzYmfMde8lE-mKf6-PjL4e1AFhoxcbu8",
+                    "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi_y60k91YuxUL0rZkne5zZUsE6Z1B_eswu-x88RA=s96-c",
+                    "__v": 2
+                },
+                "text": "111"
+            }
+        ],
+        "__v": 25,
+        "users": {
+            "followers": [
+                "5f323e017117a1534c05a68c",
+                "5f412fc82349d80a003818a9",
+                "5f63381c734710445c6f595e"
+            ],
+            "followings": [
+                "5f323e017117a1534c05a68c"
+            ],
+            "_id": "5f329cc8fe92cd34687ad4be",
+            "name": "NguyenA",
+            "email": "anguyen@email.com",
+            "provider_pic": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROvnZKBQ63cieNH3g_cDOXT2R_5AuRMw2KcH01_PkBO__itI4w&amp;s",
+            "provider": "HCM, Vietnam",
+            "__v": 14
+        }
+    },
+    {
+        "_id": "5f41302f2349d80a003818ac",
+        "text": "Category test1",
+        "title": "Title test 1",
+        "claps": 10,
+        "description": "Test 1\nTest 1\nTest 1",
+        "feature_img": "",
+        "comments": [
+            {
+                "_id": "5f41304b2349d80a003818ad",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "_id": "5f412fc82349d80a003818a9",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "dotq@hybrid-technologies.co.jp",
+                    "provider_id": "105112107849749479211",
+                    "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+                    "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+                    "__v": 2
+                },
+                "text": "tự cmt tư sướng"
+            },
+            {
+                "_id": "5f41306b2349d80a003818ae",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "_id": "5f412fc82349d80a003818a9",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "dotq@hybrid-technologies.co.jp",
+                    "provider_id": "105112107849749479211",
+                    "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+                    "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+                    "__v": 2
+                },
+                "text": "cmt tiếp theo"
+            },
+            {
+                "_id": "5f413f1b133afa3ae8a67a55",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f329cc8fe92cd34687ad4be",
+                        "5f32b5f0f2785e558c2d7894"
+                    ],
+                    "_id": "5f412fc82349d80a003818a9",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "dotq@hybrid-technologies.co.jp",
+                    "provider_id": "105112107849749479211",
+                    "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+                    "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+                    "__v": 2
+                },
+                "text": "cmt 1"
+            }
+        ],
+        "__v": 3,
+        "users": {
+            "followers": [],
+            "followings": [
+                "5f329cc8fe92cd34687ad4be",
+                "5f32b5f0f2785e558c2d7894"
+            ],
+            "_id": "5f412fc82349d80a003818a9",
+            "name": "Tran Quang Do",
+            "provider": "google",
+            "email": "dotq@hybrid-technologies.co.jp",
+            "provider_id": "105112107849749479211",
+            "token": "ya29.a0AfH6SMALVfGKzsdRjilWRULeVrUKvigmzHhsoQThrCn01tScxAw3z0XaIO_hubP5PXBqHZ0DCp83hwZidO-8dxtsFTqyM403jl9SXq4I2kgua9QRdtAPibQ1Gx8QWiocsx7FV15_xGhQMA2syU1z045ybdkqBGxCY-2Y",
+            "provider_pic": "https://lh3.googleusercontent.com/-RQcI7kVMdjo/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucl1o9hJISC1WR0BaC0nZ-YV5vgCbg/s96-c/photo.jpg",
+            "__v": 2
+        }
+    },
+    {
+        "_id": "5f732363462188070c9f84eb",
+        "text": "dfsdf",
+        "title": "dfasfd",
+        "claps": 4,
+        "description": "asdfasfasfasdf",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRd-y-IJN8glQlf1qoU01dEgGPUa0d1-sjfWg&amp;usqp=CAU",
+        "comments": [
+            {
+                "_id": "5f75856ae8eb4800173ef990",
+                "users": {
+                    "followers": [],
+                    "followings": [
+                        "5f732350462188070c9f84ea",
+                        "5f329cc8fe92cd34687ad4be"
+                    ],
+                    "_id": "5f63381c734710445c6f595e",
+                    "name": "Tran Quang Do",
+                    "provider": "google",
+                    "email": "trangia61@gmail.com",
+                    "provider_id": "102762770253056721351",
+                    "token": "ya29.a0AfH6SMCpRYr452ZhyQyH_Bi4yetKAGfK-WAtfuTd7WMR6W_acl7wOXuG_ebddLcUykMji_YKs8OAs_1uzjMkfwdg957pEtGcjJb3MQa4YlWFjA46bfhaq8wjv6GYs8EDUGWlzYmfMde8lE-mKf6-PjL4e1AFhoxcbu8",
+                    "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi_y60k91YuxUL0rZkne5zZUsE6Z1B_eswu-x88RA=s96-c",
+                    "__v": 2
+                },
+                "text": "dsfgsdg"
+            }
+        ],
+        "__v": 1,
+        "users": {
+            "followers": [
+                "5f63381c734710445c6f595e"
+            ],
+            "followings": [],
+            "_id": "5f732350462188070c9f84ea",
+            "name": "Do Tran",
+            "provider": "google",
+            "email": "tquangdo1103@gmail.com",
+            "provider_id": "117819470061762328408",
+            "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gi2_hM--Bn6vqqYDvoIXN4FYUynErdWXZc7xhni=s96-c",
+            "__v": 1
+        }
+    },
+    {
+        "_id": "5ffbefdb8d24320017467f1c",
+        "text": "dds",
+        "title": "fdsfsd",
+        "claps": 0,
+        "description": "fdsfsdfd",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRd-y-IJN8glQlf1qoU01dEgGPUa0d1-sjfWg&amp;usqp=CAU",
+        "comments": [],
+        "__v": 0,
+        "users": {
+            "followers": [],
+            "followings": [],
+            "_id": "5ffbef648d24320017467f1b",
+            "name": "Khatanzorig Baatarsuren",
+            "provider": "google",
+            "email": "khatanzorigb@gmail.com",
+            "provider_id": "103606792688552098181",
+            "token": "ya29.a0AfH6SMB7rrNCkohRf4t77blKN8wwA2oVRtuOoAzEMiklyj9-ZvIeFMPMDk5dcXiufZIB1cWZuWzErBXyByiMxhHz9wLZdI9hqBbVzJ0BFvTBoiKyp9IPC41sM1lJ4xKaw6vjrVyYAQNX9FhttXZ5SB6CnDVw_wJXZkEHUHAkeVw",
+            "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14GgE9BiD_DwajJlhtiqRd22nUUx36FU5KM78OtOijA=s96-c",
+            "__v": 0
+        }
+    },
+    {
+        "_id": "60695f4ce18bf600172ce80b",
+        "text": "asd",
+        "title": "sada",
+        "claps": 0,
+        "description": "asdasddsdas\nsadsadsa\ndsa\nd\nsad\nsadsa",
+        "feature_img": "",
+        "comments": [],
+        "__v": 0,
+        "users": {
+            "followers": [],
+            "followings": [],
+            "_id": "60695f31e18bf600172ce80a",
+            "name": "Karan Manral",
+            "provider": "google",
+            "email": "karanmanral18@gmail.com",
+            "provider_id": "103774903624908346396",
+            "token": "ya29.a0AfH6SMDyL_0izsbiwEil9g15esc5vyncEX9SihHVeA7REtKiGJNQ7KjssWPo4PcqwPhvf7zLOUmna3dbhHRXHwn9u8u8gr_1ZbvdHod4Esrux2GI7UyBdqHBexP78yntdOr_ahMD3nqvmBQUnCNUPn1U9pAX",
+            "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14Gj14Vtts3jQI4l17bjZM5Jdst_7zc7hE5Oiu4XmvQ=s96-c",
+            "__v": 0
+        }
+    },
+    {
+        "_id": "60b62889ed141d0017fc2f72",
+        "text": "Java",
+        "title": "Java Programing",
+        "claps": 2,
+        "description": "Java is a programming language and a platform. Java is a high level, robust, object-oriented and secure programming language.\n\nJava was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995. James Gosling is known as the father of Java. Before Java, its name was Oak. Since Oak was already a registered company, so James Gosling and his team changed the Oak name to Java.\n\nPlatform: Any hardware or software environment in which a program runs, is known as a platform. Since Java has a runtime environment (JRE) and API, it is called a platform.",
+        "feature_img": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT3xzYvQWyS8JS6g3PXJwsf8dcEi6bgjjJocg&amp;usqp=CAU",
+        "comments": [],
+        "__v": 0,
+        "users": {
+            "followers": [],
+            "followings": [],
+            "_id": "60b62823ed141d0017fc2f71",
+            "name": "Abhishek Bansal",
+            "provider": "google",
+            "email": "abhishek957p@gmail.com",
+            "provider_id": "105746834278706421938",
+            "token": "ya29.a0AfH6SMCJWqhLfBawExrSU4zG5-KW0ydnEAtOz-EyqgR-679DUmUespSp9JQcehSxy4Xq3OlW5bx1JoJrqRb0BlinTCx3WY_FW9E7Xzhi-z3hnEXD46K4NQu2rXT4gUJ8PwdlkKe9DeXJbCSjMiSCgAAY6Tug",
+            "provider_pic": "https://lh3.googleusercontent.com/a-/AOh14GhlmzQxTvsaVZkqgPJF8farjmR2PPl43sIcFAbRlg=s96-c",
+            "__v": 0
+        }
+    }
+]
+</code></pre>
+<div id="execution-results-GET-api-articles" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-articles"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-articles"></code></pre>
+</div>
+<div id="execution-error-GET-api-articles" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-articles"></code></pre>
+</div>
+<form id="form-GET-api-articles" data-method="GET" data-path="/api/articles" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('GET-api-articles', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-api-articles" onclick="tryItOut('GET-api-articles');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-api-articles" onclick="cancelTryOut('GET-api-articles');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-api-articles" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/api/articles</b></code>
+</p>
+</form>
+<h2 id="postapiarticle">POST /api/article</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/article"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X POST \
+    "http://yourApi.dev/api/article" 
+</code></pre>
+<div id="execution-results-POST-api-article" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-article"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-article"></code></pre>
+</div>
+<div id="execution-error-POST-api-article" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-article"></code></pre>
+</div>
+<form id="form-POST-api-article" data-method="POST" data-path="/api/article" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('POST-api-article', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POST-api-article" onclick="tryItOut('POST-api-article');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POST-api-article" onclick="cancelTryOut('POST-api-article');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POST-api-article" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>/api/article</b></code>
+</p>
+</form>
+<h2 id="postapiarticleclap">POST /api/article/clap</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/article/clap"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X POST \
+    "http://yourApi.dev/api/article/clap" 
+</code></pre>
+<div id="execution-results-POST-api-article-clap" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-article-clap"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-article-clap"></code></pre>
+</div>
+<div id="execution-error-POST-api-article-clap" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-article-clap"></code></pre>
+</div>
+<form id="form-POST-api-article-clap" data-method="POST" data-path="/api/article/clap" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('POST-api-article-clap', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POST-api-article-clap" onclick="tryItOut('POST-api-article-clap');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POST-api-article-clap" onclick="cancelTryOut('POST-api-article-clap');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POST-api-article-clap" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>/api/article/clap</b></code>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+
+<p>
+<b><code>article_id</code></b>&nbsp;&nbsp;<small>string</small> 
+<input type="text" name="article_id" data-endpoint="POST-api-article-clap" data-component="body" required hidden>
+<br>
+</p>
+</form>
+<h2 id="postapiarticlecomment">POST /api/article/comment</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/article/comment"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X POST \
+    "http://yourApi.dev/api/article/comment" 
+</code></pre>
+<div id="execution-results-POST-api-article-comment" hidden>
+    <blockquote>Received response<span id="execution-response-status-POST-api-article-comment"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POST-api-article-comment"></code></pre>
+</div>
+<div id="execution-error-POST-api-article-comment" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POST-api-article-comment"></code></pre>
+</div>
+<form id="form-POST-api-article-comment" data-method="POST" data-path="/api/article/comment" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('POST-api-article-comment', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POST-api-article-comment" onclick="tryItOut('POST-api-article-comment');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POST-api-article-comment" onclick="cancelTryOut('POST-api-article-comment');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POST-api-article-comment" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>/api/article/comment</b></code>
+</p>
+</form>
+<h2 id="getapiarticlesid">GET /api/articles/:id</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev/api/articles/non"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X GET \
+    -G "http://yourApi.dev/api/articles/non" 
+</code></pre>
+<blockquote>
+  <p>Example response (200):</p>
+</blockquote>
+<pre><code class="json language-json">{
+    "stringValue": "\"non\"",
+    "valueType": "string",
+    "kind": "ObjectId",
+    "value": "non",
+    "path": "_id",
+    "reason": {},
+    "name": "CastError",
+    "message": "Cast to ObjectId failed for value \"non\" (type string) at path \"_id\" for model \"article\""
+}
+</code></pre>
+<div id="execution-results-GET-api-articles--id" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-api-articles--id"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-api-articles--id"></code></pre>
+</div>
+<div id="execution-error-GET-api-articles--id" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-api-articles--id"></code></pre>
+</div>
+<form id="form-GET-api-articles--id" data-method="GET" data-path="/api/articles/:id" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('GET-api-articles--id', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-api-articles--id" onclick="tryItOut('GET-api-articles--id');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-api-articles--id" onclick="cancelTryOut('GET-api-articles--id');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-api-articles--id" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/api/articles/:id</b></code>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>id</code></b>&nbsp;&nbsp;<small>string</small> 
+<input type="text" name="id" data-endpoint="GET-api-articles--id" data-component="url" required hidden>
+<br>
+</p>
+</form>
+<h2 id="get">GET *</h2>
+<blockquote>
+  <p>Example request:</p>
+</blockquote>
+<pre><code class="javascript language-javascript">const url = new URL(
+    "http://yourApi.dev*"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+.then(response =&gt; response.json())
+.then(json =&gt; console.log(json));
+</code></pre>
+<pre><code class="bash language-bash">curl -X GET \
+    -G "http://yourApi.dev*" 
+</code></pre>
+<blockquote>
+  <p>Example response (404):</p>
+</blockquote>
+<pre><code class="json language-json">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;Error&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;pre&gt;Error: ENOENT: no such file or directory, stat &amp;#39;/Users/NC00011462/Documents/GitHub/mern-medium-clone/react-ui/build/index.html&amp;#39;&lt;/pre&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<div id="execution-results-GET*" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET*"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET*"></code></pre>
+</div>
+<div id="execution-error-GET*" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET*"></code></pre>
+</div>
+<form id="form-GET*" data-method="GET" data-path="*" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application/json","Accept":"application/json"}' onsubmit="event.preventDefault(); executeTryOut('GET*', this);">
+<h3>
+    Request
+    <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET*" onclick="tryItOut('GET*');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET*" onclick="cancelTryOut('GET*');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET*" hidden>Send Request 💥</button>
+</h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>*</b></code>
+</p>
+</form>
+    </div>
+    <div class="dark-box">
+        
+            <div class="lang-selector">
+                
+                    <a href="#" data-language-name="javascript">javascript</a>
+                
+                    <a href="#" data-language-name="bash">bash</a>
+                
+            </div>
+        
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var languages = ["javascript","bash"];
+        setupLanguages(languages);
+    });
+</script>
+
+</body>
+</html>

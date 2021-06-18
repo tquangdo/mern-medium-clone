@@ -143,7 +143,7 @@ module.exports = {
      * Specification schema: https://swagger.io/specification/
      */
     openapi: {
-        enabled: false,
+        enabled: true,
         // Override specific fields in the generated spec. Lodash set() notation is supported.
         overrides: {
             // 'info.version': '2.0.0',
